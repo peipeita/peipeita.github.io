@@ -1,6 +1,6 @@
 baseURL = "https:/peipeita.github.io/"
 languageCode = "en-us"
-title = "BLOG"
+title = "既來之則安之"
 theme = "minimal"
 disableKinds = ["RSS", "sitemap"]
 disqusShortname = "username" # delete this to disable disqus comments
@@ -12,7 +12,7 @@ tag = "tags"
 
 [params]
     author = "peipeita"
-    description = "Personal blog"
+    description = "いろいろ学んだことをアウトプット、あるいはメモとして記録しています。"
     githubUsername = "#"
     accent = "green"
     showBorder = true
