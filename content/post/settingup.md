@@ -19,7 +19,7 @@ $ git init
 好みのテーマを選んでくる。  
 今回は[Minimal](https://themes.gohugo.io/minimal/)を使用した。
 
-```bash
+```shell
 $ git submodule add https://github.com/calintat/minimal.git themes/minimal
 $ git submodule init
 $ git submodule update
@@ -32,6 +32,6 @@ $ cp themes/minimal/exampleSite/config.toml . #Configuration
 # baseurl= "http://example.com"
 baseurl= "YOUR Github page URL"
 
-#accent= "red"
+# accent= "red"
 accent= "green"
 ```
