@@ -1,4 +1,4 @@
-baseurl = "/"
+baseURL = "/"
 languageCode = "en-us"
 title = "既來之則安之"
 theme = "minimal"
