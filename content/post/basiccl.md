@@ -2,7 +2,6 @@
 title: "Basics of Shell like sth"
 date: 2021-05-18
 tags: ["hello", "shell"]
-draft: true
 ---
 
 ## Purpose  

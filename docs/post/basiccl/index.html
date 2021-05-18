@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Setting Up this blog</title>
+        <title>Basics of Shell like sth</title>
         
         <style>
 
@@ -85,7 +85,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Setting Up this blog</a>
+                    <a class="navbar-brand visible-xs" href="#">Basics of Shell like sth</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -121,38 +121,107 @@
 <main>
 
     <div>
-        <h2>Setting Up this blog</h2>
-        <h5>January 1, 0001</h5>
+        <h2>Basics of Shell like sth</h2>
+        <h5>May 18, 2021</h5>
         
-<a href="https://peipeita.github.io/tags/git-page"><kbd class="item-tag">git page</kbd></a>
+<a href="https://peipeita.github.io/tags/hello"><kbd class="item-tag">hello</kbd></a>
 
-<a href="https://peipeita.github.io/tags/hugo"><kbd class="item-tag">hugo</kbd></a>
+<a href="https://peipeita.github.io/tags/shell"><kbd class="item-tag">shell</kbd></a>
 
 
     </div>
 
-    <div align="start" class="content"><h2 id="prerequisities">Prerequisities</h2>
-<p>まず<code>Golang</code>と<code>Hugo</code>をインストール<br>
-静的ウェブサイトの構築にはHugoがいいとのことなのでこれを使うことにした。</p>
-<h2 id="locally-build-up">Locally build-up</h2>
-<p>ほとんど自動でやってくれる</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ hugo new site blog; cd blog
-$ git init
+    <div align="start" class="content"><h2 id="purpose">Purpose</h2>
+<p>UNIX-like な操作に慣れる。つまりディレクトリ、ファイルなどの操作が CUI 上でできるようにする。<br>
+bash script を書いて実行できるようになる。</p>
+<h2 id="hello-world">Hello world</h2>
+<pre><code class="language-{shell}" data-lang="{shell}">echo &quot;Hello world!&quot;
+echo Hello world!
+</code></pre><h2 id="directory">Directory</h2>
+<pre><code class="language-{shell}" data-lang="{shell}">pwd # Present Working Dir.
+cd ~ # Change Dir. to ~
+cd ~/  # Go to home directory
+</code></pre><h2 id="variable">Variable</h2>
+<pre><code class="language-{shell}" data-lang="{shell}">greet=&quot;Hello world!&quot;
+# greet=Hello world!
 
-</code></pre></div><p>好みのテーマを選んでくる。<br>
-今回は<a href="https://themes.gohugo.io/minimal/">Minimal</a>を使用した。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git submodule add https://github.com/calintat/minimal.git themes/minimal
-$ git submodule init
-$ git submodule update
-$ git submodule update --remote themes/minimal <span style="color:#75715e"># Update</span>
-$ cp themes/minimal/exampleSite/config.toml . <span style="color:#75715e">#Configuration  </span>
-</code></pre></div><p>この<code>config.toml</code>を書き換えていく。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#75715e"># baseurl= &#34;http://example.com&#34;</span>
-<span style="color:#a6e22e">baseurl</span>= <span style="color:#e6db74">&#34;YOUR Github page URL&#34;</span>
+echo $greet
+# echo greet
+echo ${greet}
+</code></pre><h2 id="make-dir">Make dir.</h2>
+<pre><code class="language-{shell}" data-lang="{shell}">mkdir planets
+mkdir --help
+# mkdir ~/planets
+# mkdir ./planets
+cd planets
+ls
+ls -a #show all
+# What is ., .. ?
+# Try this
+cd .
+cd ..
+pwd
 
-<span style="color:#75715e"># accent= &#34;red&#34;</span>
-<span style="color:#a6e22e">accent</span>= <span style="color:#e6db74">&#34;green&#34;</span>
-</code></pre></div></div>
+cd # Hit TAB key hereby
+</code></pre><h2 id="inputoutput">Input/Output</h2>
+<pre><code class="language-{shell}" data-lang="{shell}">echo &quot;Venus is 金星.&quot;
+echo &quot;Venus is 金星.&quot; &gt;venus.txt
+cat venus.txt
+# Add more info.
+
+echo &quot;Venus is next to our planet.&quot; &gt;&gt;venus.txt
+cat venus.txt
+</code></pre><h2 id="removing-obj">Removing obj.</h2>
+<pre><code class="language-{shell}" data-lang="{shell}">echo &quot;Sun is hot!&quot; &gt;sun.txt
+rm sun.txt
+
+mkdir Sun
+rm --help
+# pay attention for rm command
+# I rather prefer -i option
+rm -i Sun
+rm -ri Sun
+</code></pre><h2 id="txt-editing">Txt Editing</h2>
+<h3 id="religios-battle"><code>Religios</code> battle</h3>
+<p><code>Vim</code>, <code>Emacs</code>, <code>NeoVim</code> ?<br>
+Noop!!, just <code>nano</code>, the simplest.</p>
+<pre><code class="language-{shell}" data-lang="{shell}">nano jupiter.txt
+</code></pre><p>Write down as follows:</p>
+<p>Jupiter is the largest planet in this system.
+Surrouneded by many satellites.</p>
+<p>Please exit.</p>
+<pre><code class="language-{shell}" data-lang="{shell}">cat jupiter.txt
+grep Jupiter jupiter.txt
+# cat jupiter.txt | grep Jupiter
+</code></pre><h2 id="practical-bio-informatic-ians">Practical bio-informatic-ians</h2>
+<p>Blastp(R) MpGID2.<br>
+Fetch fasta file as I show u here.</p>
+<pre><code class="language-{fasta}" data-lang="{fasta}">&gt;XP_003550317.1 F-box protein GID2 [Glycine max]
+MKRAFSVDTAEDNKNNRNTKKTKLDSEEEEEHGTRGGSVYLDDNVLFEVLKHVDARSLAMAGCVSKQWQKAARDERLWELICTKQWANTGCGEQQLRSVVLALGGFRRLHALYLWPLSKPHAPSSSSSSSSWPAIPHVLRSKPRWGKDEVHLSLSLLSIRYYEKMNFLNTKKNT
+&gt;PTQ39804.1 hypothetical protein MARPO_0043s0052 [Marchantia polymorpha]
+MVSIFECQLVDGHHHQETRWIAREGAKRQKVVTTLQMDSNDDIIYEVMKHLDAKSLATATCVSKQWRKVAEDESLWENVCIQHWPSPVARQKQLRSVVLALGGFRRLYVLCLRPLLARGRPQPQALPSSLKGAEESGEREWSKDEVHLSLSLFSIDCYERLGRRHMTPSSMKFLCKPSANLSIGAHRMLGLGQQQQSASNVR
+&gt;XP_002984876.2 F-box protein GID2 [Selaginella moellendorffii]
+MLANPGKKPRICEISGELEWRIAMSQPPTVISQVERDDDMFYEILKHLDAKALAMAACVNRRWRRAAEDETLWENVCTINWSSASGASSQASQLRSVVLALGGFRRLYVLCLRPLLSRSSSVPAKASVQQQEKWSKDEVHLSLSLFSIDCYERLGRRYSNCHGSPLKLLCKSSRKADQRYLVPNAAAALELSGVN
+</code></pre><pre><code class="language-{shell}" data-lang="{shell}">nano MpGID2.fa
+</code></pre><pre><code class="language-{shell}" data-lang="{shell}">head MpGID2.fa
+#cat MpGID2.fa | head
+tail MpGID2.fa
+less MpGID2.fa
+</code></pre><pre><code class="language-{shell}" data-lang="{shell}">grep QQQQ MpGID2.fa
+grep WWWW MpGID2.fa
+</code></pre><p>For more info, 正規表現 is marvelous wit <code>grep</code>.</p>
+<h2 id="bash-script">Bash script</h2>
+<p><code>Bash</code> is a family member of <code>shell</code>.<br>
+私自身その違いなどを未だ感じたことがない。</p>
+<pre><code class="language-{shell}" data-lang="{shell}">nano test.sh
+</code></pre><pre><code class="language-{shell}" data-lang="{shell}">#! /bin/bash
+
+pwd 
+echo &quot;I am showing GID2 blast result&quot;
+cat ./MpGID2.fa
+echo &quot;Fin.&quot;
+</code></pre><pre><code class="language-{shell}" data-lang="{shell}">bash test.sh
+</code></pre></div>
 
     
     
