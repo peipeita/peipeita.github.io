@@ -75,6 +75,17 @@ rm --help
 # I rather prefer -i option
 rm -i Sun
 rm -ri Sun
+
+echo "Sun is not a planet" >sun2.txt
+cat sun2.txt
+mkdir ../star
+
+cp sun2.txt ../star/sun2.txt
+mv sun2.txt ../star/sun2_1.txt
+
+cd ../star
+ls
+cd ~
 ```
 
 ## Txt Editing
@@ -127,9 +138,17 @@ less MpGID2.fa
 ```{shell}
 grep QQQQ MpGID2.fa
 grep WWWW MpGID2.fa
+grep Q??Q MpGID2.fa
+grep W*W MpGID2.fa
 ```
 
 For more info, 正規表現 is marvelous wit `grep`.
+
+## Kil runnig process
+
+`repeat 10000 echo "Hey"`  
+ctrl + C  
+^C  
 
 ## Bash script
 

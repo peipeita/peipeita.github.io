@@ -181,6 +181,17 @@ rm --help
 # I rather prefer -i option
 rm -i Sun
 rm -ri Sun
+
+echo &quot;Sun is not a planet&quot; &gt;sun2.txt
+cat sun2.txt
+mkdir ../star
+
+cp sun2.txt ../star/sun2.txt
+mv sun2.txt ../star/sun2_1.txt
+
+cd ../star
+ls
+cd ~
 </code></pre><h2 id="txt-editing">Txt Editing</h2>
 <h3 id="religios-battle"><code>Religios</code> battle</h3>
 <p><code>Vim</code>, <code>Emacs</code>, <code>NeoVim</code> ?<br>
@@ -209,7 +220,13 @@ tail MpGID2.fa
 less MpGID2.fa
 </code></pre><pre><code class="language-{shell}" data-lang="{shell}">grep QQQQ MpGID2.fa
 grep WWWW MpGID2.fa
+grep Q??Q MpGID2.fa
+grep W*W MpGID2.fa
 </code></pre><p>For more info, 正規表現 is marvelous wit <code>grep</code>.</p>
+<h2 id="kil-runnig-process">Kil runnig process</h2>
+<p><code>repeat 10000 echo &quot;Hey&quot;</code><br>
+ctrl + C<br>
+^C</p>
 <h2 id="bash-script">Bash script</h2>
 <p><code>Bash</code> is a family member of <code>shell</code>.<br>
 私自身その違いなどを未だ感じたことがない。</p>
