@@ -222,6 +222,8 @@ less MpGID2.fa
 grep WWWW MpGID2.fa
 grep Q??Q MpGID2.fa
 grep W*W MpGID2.fa
+grep \&gt; -c MpGID2.fa # How many entries are there? 
+grep \&gt; MpGID2.fa | wc -l
 </code></pre><p>For more info, 正規表現 is marvelous wit <code>grep</code>.</p>
 <h2 id="kil-runnig-process">Kil runnig process</h2>
 <p><code>repeat 10000 echo &quot;Hey&quot;</code><br>

@@ -140,6 +140,8 @@ grep QQQQ MpGID2.fa
 grep WWWW MpGID2.fa
 grep Q??Q MpGID2.fa
 grep W*W MpGID2.fa
+grep \> -c MpGID2.fa # How many entries are there? 
+grep \> MpGID2.fa | wc -l
 ```
 
 For more info, 正規表現 is marvelous wit `grep`.
