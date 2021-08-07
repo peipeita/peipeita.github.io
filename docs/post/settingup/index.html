@@ -152,7 +152,9 @@ $ cp themes/minimal/exampleSite/config.toml . <span style="color:#75715e">#Confi
 
 <span style="color:#75715e"># accent= &#34;red&#34;</span>
 <span style="color:#a6e22e">accent</span>= <span style="color:#e6db74">&#34;green&#34;</span>
-</code></pre></div></div>
+</code></pre></div><p>よくわからないが、ここで <code>baseurl</code> を github page の URL に変更すると、ローカルでサイトの構築を確認する <code>hugo server</code> がちゃんとできなくなる。<br>
+さらに、github page の要求で、render するパスを変更しなければいけない。ブラウザから github pages の setting から Source を <code>/</code> (root) から <code>/docs</code> に変更する必要がありそう。ほかにもレンダリングの方法はあるらしいが、これが最も単純。</p>
+</div>
 
     
     

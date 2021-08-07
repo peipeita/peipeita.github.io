@@ -35,3 +35,5 @@ baseurl= "YOUR Github page URL"
 # accent= "red"
 accent= "green"
 ```
+よくわからないが、ここで `baseurl` を github page の URL に変更すると、ローカルでサイトの構築を確認する `hugo server` がちゃんとできなくなる。  
+さらに、github page の要求で、render するパスを変更しなければいけない。ブラウザから github pages の setting から Source を `/` (root) から `/docs` に変更する必要がありそう。ほかにもレンダリングの方法はあるらしいが、これが最も単純。  
