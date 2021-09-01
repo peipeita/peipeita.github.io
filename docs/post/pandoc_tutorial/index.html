@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Use pandoc</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://peipeita.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.82.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Use pandoc</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/peipeita/"><i class="fab fa-github"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Use pandoc</h2>
+        <h5>January 1, 0001</h5>
+        
+<a href="https://peipeita.github.io/tags/pandoc"><kbd class="item-tag">pandoc</kbd></a>
+
+<a href="https://peipeita.github.io/tags/docker"><kbd class="item-tag">docker</kbd></a>
+
+<a href="https://peipeita.github.io/tags/beamer"><kbd class="item-tag">beamer</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="purpose">Purpose</h2>
+<p><code>Docker</code> を使って <code>.md</code> のドキュメントから <code>beamer</code> 形式のスライドを作成してみたいと思ってやってみました。<br>
+パワポを使ってスライドを作ると、勝手に頭文字を英語にされたり、非常に頭にくる為。</p>
+<h2 id="pull-image">Pull image</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull pandoc/latex
+</code></pre></div><h2 id="set-alias">Set alias</h2>
+<p>毎回 <code>docker run -it --rm</code> なんとか、と打ち込むのは面倒なのでエイリアスを設定しました。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias pandocker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker run -it --rm -v `pwd`:/workdir -w /workdir pandoc/latex pandoc&#39;</span>
+alias <span style="color:#75715e">#確認</span>
+pandocker --help <span style="color:#75715e">#これが動けば OK!!</span>
+</code></pre></div><p>このままでは永続的に使えないので <code>vim</code> とかで <code>~/.bashrc</code> に書き込む必要がある。書き込んだら保存してターミナルを再起動するか、<code>source ~/.bashrc</code> を実行。</p>
+<h2 id="convert-md-file-to-beamer-slides">Convert .md file to beamer slides.</h2>
+<p>とりあえずサンプルとして以下のような <code>sample.md</code> を作成。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-md" data-lang="md">---
+title: &#34;Habits&#34;
+author: &#34;peipeita&#34;
+date: &#34;2021/09/01&#34;
+output: beamer_presentation
+---
+
+<span style="color:#75715e">## Getting up
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">-</span> Brush my teeth
+<span style="color:#66d9ef">-</span> Drink hot water
+
+<span style="color:#75715e">## Go to bed
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">-</span> Brush my teeth carefully
+<span style="color:#66d9ef">-</span> Wash my fase carefully
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pandocker sample.md -t beamer -o output.pdf
+</code></pre></div><p><code>pandoc: pandoc: openBinaryFile: does not exist (No such file or directory)</code></p>
+<p>この様なエラーがはかれた。いろいろ調べると WSL では Docker のマウントに変なクセがあるらしい。<a href="https://tamosblog.wordpress.com/2019/03/11/volume_mount_by_docker_on_wsl/">see here</a></p>
+<p><code>pwd</code> で指定するのではなく絶対パスで指定しないといけないらしい。 <code>-v c:/ </code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias pandocker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker run -it --rm -v &#34;c:/home/user/test:/workdir&#34; -w /workdir pandoc/latex pandoc&#39;</span>
+
+pandocker --help
+</code></pre></div><p>今度はまた違うエラーをはいた。</p>
+<p><code>docker: Error response from daemon: invalid mode: /workdir. See 'docker run --help'.</code></p>
+<p>原因はマウントの指定に <code>:</code> が二つ以上入ることらしい。<a href="https://qiita.com/masayuki14/items/633c7ab3e0f89cc5a30e">refer here</a></p>
+<p>相対パスも絶対パスも使えないので万事休す？</p>
+<p>最後の悪あがきとして<br>
+<code>-v &quot;/mnt/c/Users/User/Documents/test:/workdir&quot;</code></p>
+<p><code>-v $(pwd):/data</code> を試してみた。
+しかしうまくいかなかった。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it --rm -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/data pandoc/latex pandoc sample.md -t beamer -o output.pdf
+</code></pre></div></div>
+
+    
+    
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
