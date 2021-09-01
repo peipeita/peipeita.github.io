@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Use pandoc</title>
+        <title>Pandoc tutorial</title>
         
         <style>
 
@@ -85,7 +85,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Use pandoc</a>
+                    <a class="navbar-brand visible-xs" href="#">Pandoc tutorial</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -121,7 +121,7 @@
 <main>
 
     <div>
-        <h2>Use pandoc</h2>
+        <h2>Pandoc tutorial</h2>
         <h5>January 1, 0001</h5>
         
 <a href="https://peipeita.github.io/tags/pandoc"><kbd class="item-tag">pandoc</kbd></a>
@@ -135,16 +135,18 @@
 
     <div align="start" class="content"><h2 id="purpose">Purpose</h2>
 <p><code>Docker</code> を使って <code>.md</code> のドキュメントから <code>beamer</code> 形式のスライドを作成してみたいと思ってやってみました。<br>
-パワポを使ってスライドを作ると、勝手に頭文字を英語にされたり、非常に頭にくる為。</p>
+パワポを使ってスライドを作ると、勝手に頭文字を英語にされたり、非常に頭にくる為。<br>
+意外なことに、筆者の WSL の環境ではできなかった。後半部分では linux server で <code>singularity</code> を使って目的を達成した方法を記載しています。</p>
 <h2 id="pull-image">Pull image</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull pandoc/latex
-</code></pre></div><h2 id="set-alias">Set alias</h2>
+</code></pre></div><h2 id="first-try-on-wsl2-environmemt">First try on WSL2 environmemt</h2>
+<h3 id="set-alias">set alias</h3>
 <p>毎回 <code>docker run -it --rm</code> なんとか、と打ち込むのは面倒なのでエイリアスを設定しました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias pandocker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker run -it --rm -v `pwd`:/workdir -w /workdir pandoc/latex pandoc&#39;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias pandocker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker run -it --rm -v `pwd`:/mnt -w /mnt pandoc/latex pandoc&#39;</span>
 alias <span style="color:#75715e">#確認</span>
 pandocker --help <span style="color:#75715e">#これが動けば OK!!</span>
 </code></pre></div><p>このままでは永続的に使えないので <code>vim</code> とかで <code>~/.bashrc</code> に書き込む必要がある。書き込んだら保存してターミナルを再起動するか、<code>source ~/.bashrc</code> を実行。</p>
-<h2 id="convert-md-file-to-beamer-slides">Convert .md file to beamer slides.</h2>
+<h3 id="convert-md-file-to-beamer-slides">Convert .md file to beamer slides.</h3>
 <p>とりあえずサンプルとして以下のような <code>sample.md</code> を作成。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-md" data-lang="md">---
 title: &#34;Habits&#34;
@@ -165,20 +167,41 @@ output: beamer_presentation
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pandocker sample.md -t beamer -o output.pdf
 </code></pre></div><p><code>pandoc: pandoc: openBinaryFile: does not exist (No such file or directory)</code></p>
 <p>この様なエラーがはかれた。いろいろ調べると WSL では Docker のマウントに変なクセがあるらしい。<a href="https://tamosblog.wordpress.com/2019/03/11/volume_mount_by_docker_on_wsl/">see here</a></p>
-<p><code>pwd</code> で指定するのではなく絶対パスで指定しないといけないらしい。 <code>-v c:/ </code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias pandocker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker run -it --rm -v &#34;c:/home/user/test:/workdir&#34; -w /workdir pandoc/latex pandoc&#39;</span>
+<p><code>pwd</code> で指定するのではなく絶対パスで指定しないといけないらしい。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias pandocker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker run -it --rm -v &#34;c:/home/user/test:/mnt&#34; -w /mnt pandoc/latex pandoc&#39;</span>
 
 pandocker --help
 </code></pre></div><p>今度はまた違うエラーをはいた。</p>
-<p><code>docker: Error response from daemon: invalid mode: /workdir. See 'docker run --help'.</code></p>
+<p><code>docker: Error response from daemon: invalid mode: /mnt. See 'docker run --help'.</code></p>
 <p>原因はマウントの指定に <code>:</code> が二つ以上入ることらしい。<a href="https://qiita.com/masayuki14/items/633c7ab3e0f89cc5a30e">refer here</a></p>
-<p>相対パスも絶対パスも使えないので万事休す？</p>
+<p>相対パスも絶対パスも使えない？</p>
 <p>最後の悪あがきとして<br>
-<code>-v &quot;/mnt/c/Users/User/Documents/test:/workdir&quot;</code></p>
-<p><code>-v $(pwd):/data</code> を試してみた。
-しかしうまくいかなかった。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it --rm -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/data pandoc/latex pandoc sample.md -t beamer -o output.pdf
-</code></pre></div></div>
+<code>-v &quot;/mnt/c/Users/User/Documents/test:/mnt&quot;</code> とか <code>-v $(pwd):/mnt</code> を試してみた。
+しかしうまくいかなかった。<br>
+万事休す。</p>
+<h2 id="second-try-on-linux-server">Second try on LINUX server</h2>
+<p>おそらく、Windows と Docker の相性が悪いのだと想像する。筆者は mac を持っていないので確認できないが、mac ならできるのだろうか。<br>
+Linux のサーバーを使わせてもらっているので、そちらに移動して上の操作をやってみることにした。結果としてはうまくいった。<br>
+ただ、root 権限が必要な <code>Docker</code> は使えないので、<code>singularity</code> で代用した。<br>
+<code>singularity</code> の詳しい説明は他所に譲るが、公式のイメージなら Docker Hub から pull できるし、自分で Dockerfile を local でビルドしたものを Docker Hub に登録してそれをサーバー上から pull して singularity image を作成できる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p ~/singularity_img
+
+singularity pull ~/singularity_img/pandoc.sif docker://pandoc/latex:latest
+</code></pre></div><p><code>singularity image</code> の拡張子は <code>.sif</code> とする慣習らしい。</p>
+<h2 id="render-beamer-slides">Render beamer slides</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~
+mkdir test
+cd test
+vim sample.md <span style="color:#75715e"># 上のをコピペ</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">singularity exec -B <span style="color:#e6db74">`</span>pwd<span style="color:#e6db74">`</span>:/mnt ~/singularity_img/pandoc.sif pandoc /mnt/sample.md -t beamer -o /mnt/output.pdf
+</code></pre></div><ul>
+<li><code>-B</code> はマウント用のオプション</li>
+<li>input と output のファイルは <code>/mnt</code> でパスを指定。
+:w</li>
+</ul>
+<p><a href="images/output.pdf">Slides</a></p>
+<p>もう少し凝ったスライドは</p>
+</div>
 
     
     
