@@ -107,8 +107,10 @@ singularity exec -B `pwd`:/mnt ~/singularity_img/pandoc.sif pandoc /mnt/sample.m
 ```
 - `-B` はマウント用のオプション
 - input と output のファイルは `/mnt` でパスを指定。
-:w
-
+できたスライドはこちら
 [Slides](images/output.pdf)
 
-もう少し凝ったスライドは
+フッターとかをつけることもでき、 `-V theme:Boadilla -V colortheme:whale` を追加すればいい感じの[スライド](images/output2.pdf)をレンダリングすることができる。  
+
+
+以上
