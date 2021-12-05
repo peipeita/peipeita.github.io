@@ -66,7 +66,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.82.0" />
+ <meta name="generator" content="Hugo 0.89.4" />
         
 
         
@@ -122,7 +122,7 @@
 
     <div>
         <h2>Setting Up this blog</h2>
-        <h5>January 1, 0001</h5>
+        <h5>April 4, 2021</h5>
         
 <a href="https://peipeita.github.io/tags/git-page"><kbd class="item-tag">git page</kbd></a>
 
@@ -136,18 +136,18 @@
 静的ウェブサイトの構築にはHugoがいいとのことなのでこれを使うことにした。</p>
 <h2 id="locally-build-up">Locally build-up</h2>
 <p>ほとんど自動でやってくれる</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ hugo new site blog; cd blog
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ hugo new site blog; cd blog
 $ git init
 
 </code></pre></div><p>好みのテーマを選んでくる。<br>
 今回は<a href="https://themes.gohugo.io/minimal/">Minimal</a>を使用した。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git submodule add https://github.com/calintat/minimal.git themes/minimal
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git submodule add https://github.com/calintat/minimal.git themes/minimal
 $ git submodule init
 $ git submodule update
 $ git submodule update --remote themes/minimal <span style="color:#75715e"># Update</span>
 $ cp themes/minimal/exampleSite/config.toml . <span style="color:#75715e">#Configuration  </span>
 </code></pre></div><p>この<code>config.toml</code>を書き換えていく。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#75715e"># baseurl= &#34;http://example.com&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#75715e"># baseurl= &#34;http://example.com&#34;</span>
 <span style="color:#a6e22e">baseurl</span>= <span style="color:#e6db74">&#34;YOUR Github page URL&#34;</span>
 
 <span style="color:#75715e"># accent= &#34;red&#34;</span>

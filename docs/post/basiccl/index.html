@@ -66,7 +66,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.82.0" />
+ <meta name="generator" content="Hugo 0.89.4" />
         
 
         
@@ -135,21 +135,21 @@
 <p>UNIX-like な操作に慣れる。つまりディレクトリ、ファイルなどの操作が CUI 上でできるようにする。<br>
 bash script を書いて実行できるようになる。</p>
 <h2 id="hello-world">Hello world</h2>
-<pre><code class="language-{shell}" data-lang="{shell}">echo &quot;Hello world!&quot;
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">echo &quot;Hello world!&quot;
 echo Hello world!
 </code></pre><h2 id="directory">Directory</h2>
-<pre><code class="language-{shell}" data-lang="{shell}">pwd # Present Working Dir.
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">pwd # Present Working Dir.
 cd ~ # Change Dir. to ~
 cd ~/  # Go to home directory
 </code></pre><h2 id="variable">Variable</h2>
-<pre><code class="language-{shell}" data-lang="{shell}">greet=&quot;Hello world!&quot;
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">greet=&quot;Hello world!&quot;
 # greet=Hello world!
 
 echo $greet
 # echo greet
 echo ${greet}
 </code></pre><h2 id="make-dir">Make dir.</h2>
-<pre><code class="language-{shell}" data-lang="{shell}">mkdir planets
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">mkdir planets
 mkdir --help
 # mkdir ~/planets
 # mkdir ./planets
@@ -164,7 +164,7 @@ pwd
 
 cd # Hit TAB key hereby
 </code></pre><h2 id="inputoutput">Input/Output</h2>
-<pre><code class="language-{shell}" data-lang="{shell}">echo &quot;Venus is 金星.&quot;
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">echo &quot;Venus is 金星.&quot;
 echo &quot;Venus is 金星.&quot; &gt;venus.txt
 cat venus.txt
 # Add more info.
@@ -172,7 +172,7 @@ cat venus.txt
 echo &quot;Venus is next to our planet.&quot; &gt;&gt;venus.txt
 cat venus.txt
 </code></pre><h2 id="removing-obj">Removing obj.</h2>
-<pre><code class="language-{shell}" data-lang="{shell}">echo &quot;Sun is hot!&quot; &gt;sun.txt
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">echo &quot;Sun is hot!&quot; &gt;sun.txt
 rm sun.txt
 
 mkdir Sun
@@ -196,29 +196,29 @@ cd ~
 <h3 id="religios-battle"><code>Religios</code> battle</h3>
 <p><code>Vim</code>, <code>Emacs</code>, <code>NeoVim</code> ?<br>
 Noop!!, just <code>nano</code>, the simplest.</p>
-<pre><code class="language-{shell}" data-lang="{shell}">nano jupiter.txt
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">nano jupiter.txt
 </code></pre><p>Write down as follows:</p>
 <p>Jupiter is the largest planet in this system.
 Surrouneded by many satellites.</p>
 <p>Please exit.</p>
-<pre><code class="language-{shell}" data-lang="{shell}">cat jupiter.txt
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">cat jupiter.txt
 grep Jupiter jupiter.txt
 # cat jupiter.txt | grep Jupiter
 </code></pre><h2 id="practical-bio-informatic-ians">Practical bio-informatic-ians</h2>
 <p>Blastp(R) MpGID2.<br>
 Fetch fasta file as I show u here.</p>
-<pre><code class="language-{fasta}" data-lang="{fasta}">&gt;XP_003550317.1 F-box protein GID2 [Glycine max]
+<pre tabindex="0"><code class="language-{fasta}" data-lang="{fasta}">&gt;XP_003550317.1 F-box protein GID2 [Glycine max]
 MKRAFSVDTAEDNKNNRNTKKTKLDSEEEEEHGTRGGSVYLDDNVLFEVLKHVDARSLAMAGCVSKQWQKAARDERLWELICTKQWANTGCGEQQLRSVVLALGGFRRLHALYLWPLSKPHAPSSSSSSSSWPAIPHVLRSKPRWGKDEVHLSLSLLSIRYYEKMNFLNTKKNT
 &gt;PTQ39804.1 hypothetical protein MARPO_0043s0052 [Marchantia polymorpha]
 MVSIFECQLVDGHHHQETRWIAREGAKRQKVVTTLQMDSNDDIIYEVMKHLDAKSLATATCVSKQWRKVAEDESLWENVCIQHWPSPVARQKQLRSVVLALGGFRRLYVLCLRPLLARGRPQPQALPSSLKGAEESGEREWSKDEVHLSLSLFSIDCYERLGRRHMTPSSMKFLCKPSANLSIGAHRMLGLGQQQQSASNVR
 &gt;XP_002984876.2 F-box protein GID2 [Selaginella moellendorffii]
 MLANPGKKPRICEISGELEWRIAMSQPPTVISQVERDDDMFYEILKHLDAKALAMAACVNRRWRRAAEDETLWENVCTINWSSASGASSQASQLRSVVLALGGFRRLYVLCLRPLLSRSSSVPAKASVQQQEKWSKDEVHLSLSLFSIDCYERLGRRYSNCHGSPLKLLCKSSRKADQRYLVPNAAAALELSGVN
-</code></pre><pre><code class="language-{shell}" data-lang="{shell}">nano MpGID2.fa
-</code></pre><pre><code class="language-{shell}" data-lang="{shell}">head MpGID2.fa
+</code></pre><pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">nano MpGID2.fa
+</code></pre><pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">head MpGID2.fa
 #cat MpGID2.fa | head
 tail MpGID2.fa
 less MpGID2.fa
-</code></pre><pre><code class="language-{shell}" data-lang="{shell}">grep QQQQ MpGID2.fa
+</code></pre><pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">grep QQQQ MpGID2.fa
 grep WWWW MpGID2.fa
 grep Q??Q MpGID2.fa
 grep W*W MpGID2.fa
@@ -232,14 +232,14 @@ ctrl + C<br>
 <h2 id="bash-script">Bash script</h2>
 <p><code>Bash</code> is a family member of <code>shell</code>.<br>
 私自身その違いなどを未だ感じたことがない。</p>
-<pre><code class="language-{shell}" data-lang="{shell}">nano test.sh
-</code></pre><pre><code class="language-{shell}" data-lang="{shell}">#! /bin/bash
+<pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">nano test.sh
+</code></pre><pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">#! /bin/bash
 
 pwd 
 echo &quot;I am showing GID2 blast result&quot;
 cat ./MpGID2.fa
 echo &quot;Fin.&quot;
-</code></pre><pre><code class="language-{shell}" data-lang="{shell}">bash test.sh
+</code></pre><pre tabindex="0"><code class="language-{shell}" data-lang="{shell}">bash test.sh
 </code></pre></div>
 
     

@@ -1,6 +1,6 @@
 ---
 title: "Setting Up this blog"
-date: 2021/04/04
+date: 2021-04-04
 tags: ["git page", "hugo"]
 ---
 
